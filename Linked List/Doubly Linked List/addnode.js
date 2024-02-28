@@ -1,62 +1,51 @@
-class Node {
-    constructor(data) {
-      this.data = data;
-      this.next = null;
-      this.prev = null
-    }
+class Node{
+  constructor(data){
+    this.data = data;
+    this.next = null;
+    this.prev = null;
   }
-  class Linkedlist {
-    constructor() {
-      this.head = null;
-      this.tail = null;
-    }
-  
-    addNode(data) {
-      const newNode = new Node(data)
-  
-      if (this.head === null) {
-        this.head = newNode;
-      } else {
-        this.tail.next = newNode;
-        newNode.prev = this.tail;
-      }
-      this.tail = newNode;
-    }
-  
-  
-  
-    printForward() {
-      let temp = this.head;
-      const values = []
-      if (this.head === null) {
-        console.log("Empty");
-      }
-  
-      while (temp !== null) {
-  
-        values.push(temp.data)
-  
-        temp = temp.next;
-      }
-      console.log(values);
-    }
-  
-    printBackward() {
-      let temp = this.tail;
-      const values = []
-      while (temp !== null) {
-        values.push(temp.data)
-  
-        temp = temp.prev;
-      }
-      console.log(values);
-    }
+}
+
+class LinkedList {
+  constructor(){
+    this.head = null
+    this.tail = null
   }
-  
-  const list = new Linkedlist();
-  list.addNode(1);
-  list.addNode(2);
-  list.addNode(3);
-  list.addNode(4);
-  list.printForward();
-  list.printBackward()
+  addnode(data){
+    const newnode =new Node(data)
+    if(this.head == null){
+      this.head = newnode
+    }else{
+      this.tail.next = newnode
+      newnode.prev = this.tail
+    }
+    this.tail = newnode
+  }
+  printforward(){
+    let values = []
+    let temp = this.head
+    while(temp != null){
+      values.push(temp.data)
+      temp = temp.next
+    }
+    console.log((values));
+  }
+  printbackword(){
+    let values = []
+    let temp = this.tail 
+    while(temp != null){
+      values.push(temp.data)
+      temp = temp.prev
+    }
+    console.log(values);
+  }
+}
+
+const newlist = new LinkedList()
+newlist.addnode(5)
+newlist.addnode(8)
+newlist.addnode(6)
+newlist.addnode(3)
+newlist.addnode(9)
+newlist.printbackword()
+newlist.printforward()

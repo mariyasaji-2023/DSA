@@ -30,6 +30,7 @@ class Linkedlist {
         }
         console.log(values);
     }
+    
 
 }
 

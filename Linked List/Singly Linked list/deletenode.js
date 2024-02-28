@@ -98,6 +98,7 @@ class Linkedlist {
     deletenode(data) {
         let temp = this.head
         let prev = null;
+        
         if (temp != null && temp.data === data) {
             this.head = temp.next
             return
