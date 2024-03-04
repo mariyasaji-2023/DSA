@@ -1,46 +1,46 @@
 class Node {
-    constructor(data){
+    constructor(data) {
         this.data = data;
         this.next = null;
     }
 }
-class LinkedList{
-    constructor(){
+class LinkedList {
+    constructor() {
         this.head = null
         this.tail = null
     }
 
-    addnode(data){
+    addnode(data) {
         const newnode = new Node(data)
-        if(this.head === null){
+        if (this.head === null) {
             this.head = newnode
-        }else{
+        } else {
             this.tail.next = newnode
         }
         this.tail = newnode
     }
-    removeDuplicates(){
-        let current =  this.head
-       while(current!=null){
-        let nextnode =current.next
-       
-       while(nextnode != null && current.data === nextnode.data){
-        nextnode = nextnode.next
-       }
-       current.next = nextnode
-       if(nextnode == this.tail && current.data===nextnode.data){
-        this.tail = current
-        this.tail.next = null
-       }
-       current = nextnode
-    }
-}
 
-    print(){
+    removeDuplicates() {
+        let current = this.head
+        while (current != null) {
+            let nextnode = current.next
+            while (nextnode != null && nextnode.data == current.data){
+                nextnode = nextnode.next
+            }
+            current.next = nextnode
+            if(nextnode == this.tail && nextnode.data === current.data){
+                this.tail = current
+                this . tail.next = null
+            }
+            current = nextnode
+    }
+    }
+
+    print() {
         let temp = this.head;
         const values = []
 
-        while(temp != null){
+        while (temp != null) {
             values.push(temp.data)
             temp = temp.next
         }

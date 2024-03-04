@@ -15,9 +15,10 @@
 
 // Another way
 
+
+
 const arr = [1, 2, 6, 6, 4];
 const t = 3;
-
 var TwoNumberSum = function (arr, t) {
   let hashTable = {};
 

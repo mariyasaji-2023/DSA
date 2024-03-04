@@ -21,3 +21,5 @@ function printNumbers(n) {
 }
 const n = 5;
 printNumbers(n)
+
+
