@@ -15,6 +15,7 @@
 // let arr = [1, 2, 6, 4, 3, 7];
 // console.log(insertionsort(arr));
 
+
 function insertionsort (arr){
     for(i=1;i<arr.length;i++){
         let current = arr[i]
