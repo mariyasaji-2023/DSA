@@ -155,5 +155,5 @@ tree.inorder();
 
 console.log("Postorder traversal:");
 tree.postorder();
-// tree.removeHelper(7, tree.root, null); 
-// console.log(tree.contains(7));
+tree.removeHelper(7, tree.root, null); 
+console.log(tree.contains(7));
