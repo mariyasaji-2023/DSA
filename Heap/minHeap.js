@@ -85,9 +85,9 @@ for (let i = 0; i < inputArray.length; i++) {
     minHeap.insert(inputArray[i]);
 }
 
-console.log(MinHeap.heap);
+console.log(minHeap.heap);
 
-console.log(MinHeap.insert(11));
-MinHeap.remove()
-console.log(MinHeap.heap);
+console.log(minHeap.insert(11));
+minHeap.remove()
+console.log(minHeap.heap);
 
