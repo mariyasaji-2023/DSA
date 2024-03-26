@@ -1,47 +1,47 @@
-class Node{
-    constructor(data){
+class Node {
+    constructor(data) {
         this.data = data
         this.left = null
         this.right = null
     }
 }
-class Binarysearch{
-    constructor(){
+class Binarysearch {
+    constructor() {
         this.root = null
     }
-    insertNode(data){
+    insertNode(data) {
         const newNode = new Node(data)
         let currentNode = this.root
-        if(currentNode == null){
+        if (currentNode == null) {
             this.root = newNode
             return
         }
-        while(true){
-            if(data <currentNode.data){
-                if(currentNode.left == null){
+        while (true) {
+            if (data < currentNode.data) {
+                if (currentNode.left == null) {
                     currentNode.left = newNode
                     break;
-                }else{
-                    currentNode =currentNode.left
+                } else {
+                    currentNode = currentNode.left
                 }
-            }else{
-                if(currentNode.right == null){
+            } else {
+                if (currentNode.right == null) {
                     currentNode.right = newNode
                     break;
-                }else{
+                } else {
                     currentNode = currentNode.right
                 }
             }
         }
     }
-    contains(data){
+    contains(data) {
         let currentNode = this.root
-        while(currentNode != null){
-            if(data < currentNode.data){
+        while (currentNode != null) {
+            if (data < currentNode.data) {
                 currentNode = currentNode.left
-            }else if(data > currentNode.data){
+            } else if (data > currentNode.data) {
                 currentNode = currentNode.right
-            }else{
+            } else {
                 return true
             }
         }
@@ -51,54 +51,46 @@ class Binarysearch{
 
 
     // delete
+   
     
-    removeHelper(data, currentNode, parentNode) {
-        while (currentNode !== null) {
-            if (data < currentNode.data) {
-                parentNode = currentNode;
-                currentNode = currentNode.left;
-            } else if (data > currentNode.data) {
-                parentNode = currentNode;
-                currentNode = currentNode.right;
-            } else {
-                if (currentNode.left !== null && currentNode.right !== null) {
-                    currentNode.data = this.getMinValue(currentNode.right);
-                    this.removeHelper(currentNode.data, currentNode.right, currentNode);
-                } else {
-                    if (parentNode === null) {
-                        if (currentNode.right === null) {
-                            this.root = currentNode.left;
-                        } else {
-                            this.root = currentNode.right;
-                        }
-                    } else {
-                        if (parentNode.left === currentNode) {
-                            if (currentNode.right === null) {
-                                parentNode.left = currentNode.left;
-                            } else {
-                                parentNode.left = currentNode.right;
-                            }
-                        } else {
-                            if (currentNode.right === null) {
-                                parentNode.right = currentNode.left;
-                            } else {
-                                parentNode.right = currentNode.right;
-                            }
-                        }
-                    }
-                }
-                break;
-            }
+delete(data) {
+    this.root = this.deleteNode(this.root, data);
+  }
+
+
+  deleteNode(root, data) {
+    if (root === null) {
+      return root;
+    }
+    if (data < root.data) {
+      root.left = this.deleteNode(root.left, data);
+    } else if (data > root.data) {
+      root.right = this.deleteNode(root.right, data);
+    } else {
+      if (!root.left && !root.right) {
+        return null;
+      }
+      if (!root.left) {
+        return root.right;
+      } else if (!root.right) {
+        return root.left;
+      }
+      root.data = this.min(root.right);
+      root.right = this.deleteNode(root.right, root.data);
+    }
+    return root;
+  }
+  
+
+
+    min(root) {
+        if (!root.left) {
+            return root.data;
+        } else {
+            return this.min(root.left);
         }
     }
 
-    getMinValue(currentNode) {
-        if (currentNode.left === null) {
-            return currentNode.data;
-        } else {
-            return this.getMinValue(currentNode.left);
-        }
-    }
     preorder() {
         this.preorderHelper(this.root);
     }
@@ -139,7 +131,7 @@ class Binarysearch{
     }
 }
 
-    
+
 
 
 
@@ -155,5 +147,5 @@ tree.inorder();
 
 console.log("Postorder traversal:");
 tree.postorder();
-tree.removeHelper(7, tree.root, null); 
+tree.removeHelper(7, tree.root, null);
 console.log(tree.contains(7));
